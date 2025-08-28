@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Brand • Shop</title>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Your styles -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="responsive.css">
+
+  <!-- Data -->
+  <script defer src="products.js"></script>
+
+  <style>
+    /* Prevent horizontal scrolling */
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Ensure the main content stays fixed and doesn’t slide */
+    .main-container {
+      position: relative;
+      overflow-x: hidden;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Styles for Hamburger Menu */
+    .hamburger {
+      display: block;
+      font-size: 30px;
+      cursor: pointer;
+      margin-left: 20px;
+      color: #333;
+      padding: 10px;
+    }
+
+    .menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background: #fff;
+      padding-top: 60px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+
+    .menu a {
+      padding: 8px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #333;
+      display: block;
+      transition: background 0.3s ease;
+    }
+
+    .menu a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .close-menu {
+      font-size: 30px;
+      color: #333;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+    }
+
+    /* Profile & Cart Icons at Top Right */
+    .actions {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .actions a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    /* Search and Category Bar */
+    .search-box {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      background-color: #f1f1f1;
+      align-items: center;
+    }
+
+    .search-box input {
+      padding: 10px;
+      border-radius: 5px;
+      width: 60%;
+    }
+
+    .search-box select {
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .search-box button {
+      padding: 10px 15px;
+      border-radius: 5px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+    }
+
+    /* Categories sliding bar */
+    .category-bar {
+      display: flex;
+      overflow-x: auto;
+      padding: 8px 0;
+      background-color: #f3f4f6;
+    }
+
+    .category-bar a {
+      padding: 10px 20px;
+      margin-right: 15px;
+      background: #fff;
+      border-radius: 5px;
+      font-weight: bold;
+      color: #1f2937;
+      text-decoration: none;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .category-bar a:hover {
+      background-color: #3b82f6;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="left">
+      <!-- Hamburger Menu (3 lines) -->
+      <span class="hamburger" id="hamburger">
+        <i class="fa fa-bars"></i> <!-- Three horizontal lines (Hamburger icon) -->
+      </span>
+      <a id="logo" href="index.html">
+        <span class="logo-icon"><i class="fa-solid fa-bag-shopping"></i></span>
+        <span class="logo-text">Brand</span>
+      </a>
+    </div>
+
+    <!-- Actions (Profile and Cart) -->
+    <nav class="actions">
+      <a href="profile.html" title="Profile">
+        <i class="fa-regular fa-user"></i>
+      </a>
+      <a href="cart.html" title="My cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </a>
+    </nav>
+  </header>
+
+  <!-- Sliding Menu -->
+  <div class="menu" id="menu">
+    <span class="close-menu" id="closeMenu">&times;</span>
+    <a href="#">All categories</a>
+    <a href="#">Gadgets</a>
+    <a href="#">Clothes</a>
+    <a href="#">Accessories</a>
+    <a href="#">Interior</a>
+  </div>
+
+  <!-- Search Bar -->
+  <section class="search-box">
+    <input id="Search_bar" type="text" placeholder="Search" />
+    <select id="cata" aria-label="All categories">
+      <option>All categories</option>
+      <option>Gadgets</option>
+      <option>Clothes</option>
+      <option>Accessories</option>
+      <option>Interior</option>
+    </select>
+    <button id="search_button">Search</button>
+  </section>
+
+  <!-- Categories Bar -->
+  <section class="category-bar">
+    <a href="#">All categories</a>
+    <a href="#">Gadgets</a>
+    <a href="#">Clothes</a>
+    <a href="#">Accessories</a>
+    <a href="#">Interior</a>
+    <a href="#">Home & Outdoor</a>
+  </section>
+
+  <main class="main-container">
+    <!-- ===== HERO ===== -->
+     <!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="deals-badge">Latest trending</span>
+    <h1>Electronic items</h1>
+    <p>Discover fresh arrivals across phones, wearables, audio and more.</p>
+    <div class="hero-ctas">
+      <a class="btn primary" href="#gadgets">Shop now</a>
+      <a class="btn ghost" href="#featured">Learn more</a>
+    </div>
+  </div>
+  <div class="hero-art">
+    <img src="/Images/headphone.avif" alt="">
+  </div>
+</section>
+
+<!-- SALE TIMER BELOW HERO -->
+<section class="sale-timer-section">
+  <div class="sale-timer">
+    <span>Sale ends in:</span>
+    <div class="timer">
+      <div id="dd">00</div> Hours
+      <div id="dh">00</div> Minutes
+      <div id="ds">00</div> Sec
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- ===== DEALS BAR ===== -->
+    <section class="featured">
+      
+
+      <ul id="dealsGrid" class="card-grid"></ul>
+    </section>
+
+    <!-- ===== FEATURED CATEGORIES (tiles) ===== -->
+    <section id="featured" class="featured">
+      <div class="section-head">
+        <h2>Browse by category</h2>
+        <a href="#">See all</a>
+      </div>
+      <div class="tile-grid">
+        <a class="tile" href="#gadgets">
+          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop" alt="">
+          <div class="tile-meta"><h3>Gadgets</h3><span>Headphones, phones, watches</span></div>
+        </a>
+        <a class="tile" href="#clothes">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop" alt="">
+          <div class="tile-meta"><h3>Clothes</h3><span>Men’s & women’s</span></div>
+        </a>
+        <a class="tile" href="#accessories">
+          <img src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?q=80&w=1200&auto=format&fit=crop" alt="">
+          <div class="tile-meta"><h3>Accessories</h3><span>Bags, wallets & more</span></div>
+        </a>
+        <a class="tile" href="#interior">
+          <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=1200&auto=format&fit=crop" alt="">
+          <div class="tile-meta"><h3>Home & interior</h3><span>Furniture & décor</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== PRODUCT SECTIONS ===== -->
+    <section id="gadgets" class="featured">
+      <div class="section-head">
+        <h2>Electronics & Gadgets</h2>
+        <a href="listing.html">Source now</a>
+      </div>
+      <ul id="gadgetsGrid" class="card-grid"></ul>
+    </section>
+
+    <!-- <section id="clothes" class="featured">
+      <div class="section-head">
+        <h2>Clothes</h2>
+        <a href="listing.html">Source now</a>
+      </div>
+      <ul id="clothesGrid" class="card-grid"></ul>
+    </section> -->
+
+    <!-- <section id="interior" class="featured">
+      <div class="section-head">
+        <h2>Home and outdoor</h2>
+        <a href="listing.html">Source now</a>
+      </div>
+      <ul id="interiorGrid" class="card-grid"></ul>
+    </section> -->
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-logo">
+        <strong>Brand</strong>
+        <p>Quality goods. Fast shipping. Secure checkout.</p>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <h4>About</h4>
+          <a href="#">Company</a>
+          <a href="#">Careers</a>
+          <a href="#">Newsroom</a>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <a href="#">Help Center</a>
+          <a href="#">Returns</a>
+          <a href="#">Shipping</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+        <div class="app-download">
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" />
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© <span id="year"></span> Brand. All rights reserved.</div>
+      <div class="language-select">
+        <img src="https://flagcdn.com/w20/us.png" alt="">
+        <select>
+          <option>English</option>
+          <option>Español</option>
+          <option>Français</option>
+        </select>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Page script: render cards from PRODUCTS ===== -->
+  <script>
+    const $ = s => document.querySelector(s);
+    const fmt = n => (n>=100 ? `USD ${n}` : `USD ${n}`);
+
+    // Toggle menu display
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('menu').style.display = 'block';
+    });
+
+    document.getElementById('closeMenu').addEventListener('click', () => {
+      document.getElementById('menu').style.display = 'none';
+    });
+
+    function card(p){
+      const off = p.oldPrice ? Math.max(1, Math.round((1 - p.price/p.oldPrice)*100)) : 0;
+      return `
+        <li class="card">
+          <a class="thumb" href="product.html?id=${p.id}">
+            ${off ? `<span class="badge">-${off}%</span>` : ``}
+            <img loading="lazy" src="${p.img}" alt="">
+          </a>
+          <div class="title">${p.title}</div>
+          <div class="price-row">
+            <div class="price">${fmt(p.price)}</div>
+            ${p.oldPrice ? `<div class="old">${fmt(p.oldPrice)}</div>` : ``}
+          </div>
+          <div class="meta">${p.shipping || 'Ships in 24h'}</div>
+          <a class="btn xs" href="product.html?id=${p.id}"><i class="fa-solid fa-cart-plus"></i> Add</a>
+        </li>`;
+    }
+
+    function fill(){
+      const all = (window.PRODUCTS||[]);
+      // Deals: first 4 tech items
+      $("#dealsGrid").innerHTML = all
+        .filter(p => ['Smartphones','Tablets','Headphones','Cameras','Laptops','Wearables','Audio','Home Appliances'].includes(p.category))
+        .slice(0,4)
+        .map(card).join("");
+
+      // Gadgets section
+      $("#gadgetsGrid").innerHTML = all
+        .filter(p => ['Smartphones','Tablets','Headphones','Cameras','Laptops','Wearables','Audio','Home Appliances'].includes(p.category))
+        .slice(0,8)
+        .map(card).join("");
+
+      // Clothes section
+      $("#clothesGrid").innerHTML = all
+        .filter(p => (p.category||'').toLowerCase().includes('men'))
+        .slice(0,8)
+        .map(card).join("");
+
+      // Interior / Home section
+      $("#interiorGrid").innerHTML = all
+        .filter(p => p.category === 'Interior')
+        .slice(0,8)
+        .map(card).join("");
+
+      // Year in footer
+      $("#year").textContent = new Date().getFullYear();
+    }
+
+    window.addEventListener('DOMContentLoaded', fill);
+  </script>
+
+  <script>
+  // Set the date we're counting down to
+  var countDownDate = new Date("August 31, 2025 23:59:59").getTime();
+
+  // Update the countdown every 1 second
+  var x = setInterval(function() {
+
+    // Get the current date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for hours, minutes, and seconds
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the elements with respective IDs
+    document.getElementById("dd").innerHTML = hours < 10 ? "0" + hours : hours;
+    document.getElementById("dh").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+    document.getElementById("ds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+    // If the countdown is finished, display a message
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("dd").innerHTML = "00";
+      document.getElementById("dh").innerHTML = "00";
+      document.getElementById("ds").innerHTML = "00";
+      // You can add any additional actions here after the timer ends
+    }
+  }, 1000);
+</script>
+
+</body>
+</html>
